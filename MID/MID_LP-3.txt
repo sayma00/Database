@@ -1,0 +1,36 @@
+1.select sysdate AS TODAY from dual;
+2.select lower(ename) from emp;
+3.select concat(ename,deptno) from emp;
+4.select sal,sal/300,round(sal/300,2) from emp where ename IN('KING','FORD');
+5.select ename, sal, comm, MOD(sal, comm) from	emp where job = 'SALESMAN';
+6.select ename,hiredate,(sysdate-hiredate)/30 AS "Months worked by blake" from emp where ename='BLAKE';
+7.select ADD_MONTHS('01-DEC-18',0) from dual;
+8.select empno,hiredate,round(hiredate,'month') from emp;
+9.select empno,hiredate,trunc(hiredate,'month') FROM emp;
+10.select TO_CHAR(sal,'$009,999') salary from emp where ename = 'BLAKE';
+11.select TO_CHAR(hiredate, 'DD Month YYYY') hiredate from  emp;
+12.select TO_CHAR(sysdate) from emp;
+13.select comm,nvl(To_CHAR(comm),'No Commission Yet') from emp;
+14.select ename,length(ename),job,length(job),NULLIF(ename,job) from emp;
+15.select comm,nvl2(comm,'is not null','null') from emp;
+
+16.select job, sal,DECODE(job,'SALESMAN',SAL+2000,'MANAGER',SAL+3000,'PRESIDENT',SAL+4000,SAL)
+ INCREMENT_SALARY from   emp;
+
+17.select avg(sal), min(sal),max(sal)from emp;
+  	
+18.select deptno, avg(sal),min(sal),max(sal) from emp GROUP BY deptno;
+
+19.select job, avg(sal),min(sal),max(sal) from emp GROUP BY job;
+
+20.select deptno,min(sal) from emp GROUP BY deptno HAVING   min(sal)>800;
+
+21.select COUNT(empno) from	emp where job = 'SALESMAN';
+22.select job, sum(sal) from  emp GROUP BY job;
+
+23.select deptno, sum(sal)from emp GROUP BY deptno;
+
+24.select deptno,job, sum(sal) from emp GROUP BY deptno,job HAVING sum(sal)>5000;
+25.select count(empno) from emp where deptno = 20;
+
+
