@@ -1,0 +1,20 @@
+1. create table publishers(pubid number(10)primary key, pname varchar2(15), email varchar2(30), phone number(11));
+    desc publishers;
+
+2. create table subjects(subid number(10)primary key, sname varchar2(15));
+     desc subjects;
+
+3. create table authors(auid number(10)primary key, aname varchar2(15), email varchar2(30), phone number(11));
+     desc authors;
+
+4. create table titles(titleid number(10)primary key, title varchar2(50), pubid number(10), subid number(10), 
+
+    pubdate varchar2(15), cover varchar2(15), price number(5), FOREIGN KEY(pubid) REFERENCES publishers(pubid), 
+    FOREIGN KEY(subid) REFERENCES subjects(subid ));
+     desc titles;
+
+5. create table titleauthors(titleid number(10), authid number(10), importance varchar2(15),
+   FOREIGN KEY(titleid) REFERENCES titles(titleid), FOREIGN KEY(authid) REFERENCES authors(auid), 
+   primary key(titleid,authid);
+
+   desc titleauthors;

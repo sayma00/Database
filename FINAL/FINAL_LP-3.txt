@@ -1,0 +1,31 @@
+1. create table pharmacy(p_id number(10)primary key, p_name varchar2(15), p_location1 varchar2(30),p_location2 varchar2(30),p_location3 varchar2(30));
+2. create table adress(a_id number(10)primary key, d_city varchar2(15), d_country varchar2(15) );
+
+3.create table Doctor(d_id number(10), d_name varchar2(15), d_speciality1 varchar2(15), d_speciality2 varchar2(15),d_speciality3 varchar2(15), a_id number(10), PRIMARY KEY (d_id), FOREIGN KEY (a_id) REFERENCES adress(a_id));
+
+4.create table medicine(m_id number(10)primary key, m_name varchar2(15), m_company varchar2(15), d_id number(10), FOREIGN KEY(d_id) REFERENCES Doctor(d_id));
+
+5.create table fk (p_id number(10), m_id number(10), primary key (p_id,m_id), FOREIGN KEY(p_id) REFERENCES pharmacy(p_id),FOREIGN KEY(m_id) REFERENCES medicine(m_id));
+6.insert into pharmacy values(1, 'Lolita', 'Mirpur', 'kuril', null);
+
+7.insert into pharmacy values(2, 'Masud pharmacy', 'bashabo', 'Mirpur', null);
+
+8.insert into pharmacy values(3, 'Mou pharmacy', 'Boshundhora', null, null);
+9.insert into adress values(100, 'Dhaka', 'Bangladesh');
+
+10.insert into adress values(200, 'kushtia', 'Bangladesh');
+
+11.insert into adress values(300, 'Barishal', 'Bangladesh');
+12.insert into doctor values(1000, 'Noboni', 'Eye specialist', null, null, 100);
+
+13.insert into doctor values(2000, 'Rakib', 'skin specialist', null, null, 200);
+14.insert into doctor values(3000, 'Sumaiya', 'Medicine ', null, null, 300);
+
+15. insert into medicine values(10000, 'medicine 1', 'company 1', 1000);
+16. insert into medicine values(20000, 'medicine 2', 'company 2', 2000);
+
+17. insert into medicine values(30000, 'medicine 3', 'company 3', 1000);
+18. insert into fk values(10,10000);
+
+19. insert into fk values(20,20000);
+20. insert into fk values(30,30000);

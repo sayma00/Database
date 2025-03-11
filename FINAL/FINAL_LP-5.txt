@@ -1,0 +1,63 @@
+Subquery:
+
+1.SELECT e1.name 
+FROM employee e1 
+WHERE e1.salary > (SELECT salary FROM employee WHERE name='SMITH');
+2.SELECT name 
+FROM employee 
+WHERE job = (SELECT job FROM employee WHERE name = 'JONES');
+
+3.SELECT name 
+FROM employee 
+WHERE salary = (SELECT salary FROM employee WHERE name = 'MARTIN');
+
+4.SELECT name 
+FROM employee 
+WHERE hire_date > (SELECT hire_date FROM employee WHERE name = 'KING');
+
+5.SELECT e1.name 
+FROM employee e1 
+JOIN department d1 ON e1.department_id = d1.department_id 
+WHERE e1.job = 'CLERK' AND d1.name = 'Accounting';
+
+Joining:
+
+1.SELECT name
+FROM employee
+JOIN department ON employee.department_id = department.department_id
+WHERE department.location = 'DALLAS';
+
+2.SELECT employee.name, employee.department_id, department.name AS department_name
+FROM employee
+JOIN department ON employee.department_id = department.department_id;
+
+3.SELECT employee.name, department.name AS department_name
+FROM employee
+JOIN department ON employee.department_id = department.department_id
+WHERE employee.salary > 3000;
+
+4.SELECT e1.name
+FROM employee e1
+JOIN employee e2 ON e1.manager_id = e2.employee_id
+WHERE e1.hire_date < e2.hire_date;
+
+5.SELECT e1.name, COALESCE(e2.name, 'NO MANAGER') AS manager_name
+FROM employee e1
+LEFT JOIN employee e2 ON e1.manager_id = e2.employee_id;
+
+6.SELECT employee.name, salary_grade.grade
+FROM employee
+JOIN salary_grade ON employee.salary BETWEEN salary_grade.lowest_salary AND salary_grade.highest_salary
+WHERE salary_grade.grade = 3;
+
+7.SELECT employee.name, COALESCE(department.name, 'NO DEPARTMENT') AS department_name
+FROM employee
+LEFT JOIN department ON employee.department_id = department.department_id;
+
+
+Subquery and Joining:
+
+1.SELECT name 
+FROM employee 
+WHERE department_id = (SELECT department_id FROM department WHERE name = 'RESEARCH');
+

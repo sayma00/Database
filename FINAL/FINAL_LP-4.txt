@@ -1,0 +1,44 @@
+1.create table Teacher101 (tID NUMBER(10),tName VARCHAR2(10),tDepartment VARCHAR2(10));
+
+2.insert into Teacher101 VALUES (101, 'Rahim', 'EEE');
+insert into Teacher101 VALUES (102, 'Sumi', 'CSE');
+insert into Teacher101 VALUES (103, 'Bobi', 'CS');
+insert into Teacher101 VALUES (104, 'kamrun', 'Chemistry');
+insert into Teacher101 VALUES (105, 'Nitu', 'Biologyss');
+
+3.CREATE VIEW Teacher101View AS
+SELECT tName, tDepartment FROM Teacher101;
+
+4.select * FROM Teacher101View;
+
+5.select tName FROM Teacher101View where tDepartment = 'CS';
+
+6.DROP VIEW Teacher101View;
+
+Sequence
+
+1.CREATE SEQUENCE DEPT_ID_SEQ
+START WITH 60
+INCREMENT BY 10
+MAXVALUE 200;
+
+2.select sequence_name, max_value, increment_by, last_number FROM user_sequences WHERE sequence_name = 'DEPT_ID_SEQ';
+
+3.insert into DEPT (DEPTNO,DNAME,LOC)
+VALUES (DEPT_ID_SEQ.NEXTVAL, 'FULL STACK DEVELOPER','DHAKA');
+
+4.select DEPT_ID_SEQ.CURRVAL FROM dual;
+
+5.select DEPT_ID_SEQ.NEXTVAL FROM dual;
+
+User Access Control
+
+1.create USER Rahul IDENTIFIED BY ret23erz;
+
+2.CREATE ROLE Accounts;
+
+3.GRANT create table, create sequence, create view TO Accounts;
+
+4.GRANT Accounts TO Rahul;
+
+5.ALTER USER Rahul IDENTIFIED BY rec34tg;

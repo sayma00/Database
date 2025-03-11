@@ -1,0 +1,32 @@
+1. create table department (deptid number(3)primary key, dept_name varchar2(6)check (dept_name IN('CSE','EEE' ,'BBA' ,'Eng' ,'Ach')) , budget number(6)DEFAULT 0);
+
+2. create table course (crs_id number(4) primary key, crs_name varchar2(20) NOT NULL,deptid number(3), constraint fk_01 FOREIGN KEY (deptid) REFERENCES department (deptid));
+
+
+##EDIT CONSTRAINTS##
+
+1. create table student (s_id number, s_name varchar2(20), Phone number, Address varchar2(50),
+   Email varchar2(30), credit_completed number(3), course_completed number(2), CGPA number(3,2), 
+   Deptno number(5), Gender varchar2(6));
+
+
+2. alter table student add constraint p1 primary key(s_id);
+
+
+3. alter table student MODIFY s_name varchar2(20)NOT NULL;
+
+4. alter table student MODIFY Email varchar2(30)UNIQUE;
+
+
+5. alter table department add(Deptno number(5));
+alter table student add constraint fk1 FOREIGN KEY(Deptno) REFERENCES department(Deptid);
+
+6. alter table student add constraint checking CHECK(Gender IN('M', 'F'));
+
+7. alter table student disable constraint P1;
+
+8. alter table student drop constraint CHECKING;
+
+9. select constraint_name, column_Name from user_cons_columns where table_name='student';
+
+10. alter table student enable constraint P1;
